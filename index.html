@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Night to Nourish</title>
+<meta name="description" content="A Night to Nourish: dinner in the meadow and live music at Snipes Farm, raising money for hunger relief in Lower Bucks County.">
+<link rel="icon" href="images/logo-stacked.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2e6461;
+    --green-dark: #1d3d3b;
+    --cream: #faf6ee;
+    --wheat: #e9dcc0;
+    --gold: #d9822b;
+    --ink: #2b2b2b;
+    --muted: #5d5d5d;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; } section[id] { scroll-margin-top: 80px; }
+  body { margin: 0; font-family: Lato, Arial, sans-serif; color: var(--ink); background: var(--cream); line-height: 1.6; }
+  h1, h2, h3 { font-family: "Playfair Display", Georgia, serif; line-height: 1.2; margin: 0 0 .5em; }
+  a { color: var(--green); }
+  img { max-width: 100%; display: block; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  header { position: sticky; top: 0; z-index: 10; background: rgba(250,246,238,.97); border-bottom: 1px solid var(--wheat); }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 20px; max-width: 1100px; margin: 0 auto; }
+  .nav .brand img { height: 60px; width: auto; }
+  .nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 0; padding: 0; }
+  .nav a { text-decoration: none; color: var(--ink); font-weight: 700; font-size: .9rem; letter-spacing: .08em; text-transform: uppercase; }
+  .nav a:hover { color: var(--green); }
+  .nav a.btn { color: #fff; }
+
+  .btn { display: inline-block; background: var(--green); color: #fff; padding: 12px 26px; border-radius: 4px; text-decoration: none; font-weight: 700; letter-spacing: .05em; }
+  .btn:hover { background: var(--green-dark); }
+  .btn.alt { background: transparent; border: 2px solid #fff; }
+  .btn.small { padding: 8px 16px; }
+
+  /* Hero */
+  .hero { position: relative; min-height: 78vh; display: grid; place-items: center; text-align: center; color: #fff;
+    background: linear-gradient(rgba(25,22,15,.5), rgba(25,22,15,.6)), url("images/artwork.jpg") center 35%/cover no-repeat, var(--green-dark); }
+  .hero .inner { padding: 50px 20px; max-width: 980px; }
+  .hero img.logo { width: min(340px, 80%); margin: 0 auto 22px; background: #fff; border-radius: 8px; padding: 10px 14px; box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.6rem); text-shadow: 0 2px 10px rgba(0,0,0,.4); margin-bottom: .2em; }
+  .hero .sub { font-family: "Playfair Display", Georgia, serif; font-style: italic; font-size: clamp(1.4rem, 3vw, 2.2rem); margin: 0 0 26px; }
+  .hero .info { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 0 auto 26px; max-width: 860px; }
+  .infocard { background: rgba(245,245,245,.93); color: var(--ink); border-radius: 14px; padding: 20px 18px; }
+  .infocard h2 { font-size: 1.5rem; text-transform: uppercase; color: var(--green-dark); margin-bottom: .35em; }
+  .infocard p { margin: 0; color: var(--green); font-size: 1.15rem; }
+  .infocard p.big { font-weight: 700; font-size: 1.35rem; }
+  .hero .please { font-size: 1.35rem; margin: 0 0 18px; }
+  .btn.big { font-size: 1.4rem; padding: 14px 64px; border-radius: 40px; border: 3px solid #5fae86; }
+  .hero .tag { font-size: 1.05rem; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 18px; }
+  .hero .when { font-size: 1.2rem; margin-bottom: 18px; }
+  .soldout { display: inline-block; background: var(--gold); color: #fff; padding: 6px 16px; border-radius: 3px; font-weight: 700; letter-spacing: .1em; margin-bottom: 16px; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+  section { padding: 72px 0; }
+  section.tint { background: var(--wheat); }
+  .section-title { text-align: center; font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 30px; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .split img { border-radius: 6px; box-shadow: 0 6px 20px rgba(0,0,0,.12); }
+
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card { background: #fff; border-radius: 6px; padding: 28px; box-shadow: 0 4px 14px rgba(0,0,0,.06); }
+  .host img { height: 90px; width: auto; margin: 0 auto 16px; object-fit: contain; }
+  .host { text-align: center; }
+
+  .tier .price { font-family: "Playfair Display", Georgia, serif; font-size: 2.2rem; color: var(--green); }
+  .tier .name { font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
+  .tier .impact { font-style: italic; color: var(--muted); margin-bottom: 14px; }
+  .tier ul { padding-left: 20px; margin: 0; }
+  .center { text-align: center; margin-top: 30px; }
+
+  details { background: #fff; border-radius: 6px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+  summary { cursor: pointer; padding: 16px 20px; font-weight: 700; list-style: none; position: relative; padding-right: 44px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: 20px; top: 12px; font-size: 1.4rem; color: var(--green); }
+  details[open] summary::after { content: "\2013"; }
+  details p, details ul { margin: 0; padding: 0 20px 16px; }
+  details ul { padding-left: 40px; }
+  .faq { max-width: 820px; margin: 0 auto; }
+
+  form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  form label { display: flex; flex-direction: column; font-size: .9rem; font-weight: 700; gap: 4px; }
+  form .full { grid-column: 1 / -1; }
+  input, textarea { font: inherit; padding: 10px 12px; border: 1px solid #c9c2b2; border-radius: 4px; background: #fff; }
+  textarea { min-height: 130px; resize: vertical; }
+  form button { border: 0; cursor: pointer; font: inherit; justify-self: start; }
+
+  .map { width: 100%; height: 320px; border: 0; border-radius: 6px; }
+
+  footer { background: var(--green-dark); color: #eee; padding: 48px 0 30px; font-size: .95rem; }
+  footer a { color: #fff; }
+  .foot { display: grid; grid-template-columns: auto 1fr 1fr; gap: 30px; align-items: start; }
+  .foot img { width: 170px; background: var(--cream); border-radius: 6px; padding: 8px; }
+  .social { display: flex; gap: 14px; margin-top: 10px; }
+  .social svg { width: 26px; height: 26px; fill: #fff; }
+  .copy { text-align: center; margin-top: 30px; font-size: .85rem; opacity: .8; }
+
+  @media (max-width: 800px) {
+    header { position: static; }
+    .nav { flex-direction: column; }
+    .nav ul { justify-content: center; }
+    .split, .cards, .foot, form, .hero .info { grid-template-columns: 1fr; }
+    section { padding: 52px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="#home"><img src="images/logo.png" alt="A Night to Nourish logo"></a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#sponsorship">Sponsorship</a></li>
+      <li><a href="#faq">FAQ's</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a class="btn small" href="https://a-night-to-nourish.ticketbud.com/a-night-to-nourish-2026">Tickets</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <!-- HOME / HERO -->
+  <section class="hero" id="home">
+    <div class="inner">
+      <img class="logo" src="images/logo-stacked.jpg" alt="A Night to Nourish: Support hunger relief in Lower Bucks">
+      <h1>Join Us For A Night Of Music &amp; Celebration</h1>
+      <p class="sub">For a Good Cause</p>
+      <div class="info">
+        <div class="infocard"><h2>When &amp; Where</h2><p class="big">Date TBD</p><p>Snipes Farm</p></div>
+        <div class="infocard"><h2>Our Mission</h2><p>Support Hunger Relief in Lower Bucks</p><p><em>Every contribution makes a difference</em></p></div>
+      </div>
+      <p class="please">Please Support Us Through Donation</p>
+      <div class="actions">
+        <a class="btn big" href="https://a-night-to-nourish.ticketbud.com/a-night-to-nourish-2026">Donate Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <h2 class="section-title">About the Evening</h2>
+      <div class="split">
+        <div>
+          <p>Join us at Snipes Farm for an evening of dinner in the meadow and live music in the pavilion. A Night to Nourish is co-hosted by three nonprofits to raise money for hunger relief in Lower Bucks County.</p>
+          <p>This is a BYOB picnic: bring your own dinner, drinks, plates, flatware and napkins. Prefer not to cook? Order a boxed dinner from Ardana in Newtown when you buy tickets. Meals are picked up at the event and served cold.</p>
+          <p><a class="btn" href="https://a-night-to-nourish.ticketbud.com/a-night-to-nourish-2026">Get Tickets</a></p>
+        </div>
+        <img src="images/artwork.jpg" alt="A Night to Nourish event artwork">
+      </div>
+    </div>
+  </section>
+
+  <section class="tint" id="hosts">
+    <div class="wrap">
+      <h2 class="section-title">Our Hosts</h2>
+      <div class="cards">
+        <div class="card host">
+          <img src="images/snipes-farm.png" alt="Snipes Farm logo">
+          <h3>Snipes Farm &amp; Education Center</h3>
+          <p>A working farm dedicated to raising awareness and serving those in need. 890 W. Bridge Street, Morrisville, PA.</p>
+          <p><a href="https://www.snipesfarm.org/">snipesfarm.org</a></p>
+        </div>
+        <div class="card host">
+          <img src="images/interfaith-food-alliance.jpg" alt="Interfaith Food Alliance logo">
+          <h3>Interfaith Food Alliance</h3>
+          <p>Fourteen faith-based communities working together to fight hunger in the Morrisville School District through education, advocacy, and feeding children and families.</p>
+        </div>
+        <div class="card host">
+          <img src="images/pennsbury-kids.jpg" alt="Pennsbury Kids logo">
+          <h3>Pennsbury Kids</h3>
+          <p>A 501(c)(3) that partners with Pennsbury School District staff to fund experiences and enrichment for students across 10 elementary schools, 3 middle schools and the high school.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSORSHIP -->
+  <section id="sponsorship">
+    <div class="wrap">
+      <h2 class="section-title">Sponsorship Packages</h2>
+      <p style="text-align:center;max-width:760px;margin:0 auto 34px">Your sponsorship fights hunger in Lower Bucks County. A Night to Nourish is co-hosted by three 501(c)(3) nonprofits: Interfaith Food Alliance, Pennsbury Kids, and Snipes Farm &amp; Education Center.</p>
+      <div class="cards">
+        <div class="card tier">
+          <div class="price">$5,000</div>
+          <div class="name">Community Champion</div>
+          <div class="impact">Provides $50 grocery gift cards to 100 families</div>
+          <ul>
+            <li>12 tickets (boxed dinners optional)</li>
+            <li>Logo on large entrance signage</li>
+            <li>Recognition by the emcee</li>
+            <li>Logo on all printed materials, including Thank You bags</li>
+            <li>Logo on the event website</li>
+            <li>Social media promotion</li>
+            <li>Option to add items or literature to the Thank You bags</li>
+          </ul>
+        </div>
+        <div class="card tier">
+          <div class="price">$2,500</div>
+          <div class="name">Powerful Provider</div>
+          <div class="impact">Provides 72 cases of canned soup</div>
+          <ul>
+            <li>8 tickets (boxed dinners optional)</li>
+            <li>Recognition by the emcee</li>
+            <li>Logo on all printed materials, including Thank You bags</li>
+            <li>Logo on the event website</li>
+            <li>Social media promotion</li>
+            <li>Option to add items or literature to the Thank You bags</li>
+          </ul>
+        </div>
+        <div class="card tier">
+          <div class="price">$1,000</div>
+          <div class="name">Sustenance Supporter</div>
+          <div class="impact">Provides up to 200 dozen eggs</div>
+          <ul>
+            <li>4 tickets (boxed dinners optional)</li>
+            <li>Logo on all printed materials, including Thank You bags</li>
+            <li>Logo on the event website</li>
+            <li>Social media promotion</li>
+            <li>Option to add items or literature to the Thank You bags</li>
+          </ul>
+        </div>
+      </div>
+      <div class="center"><a class="btn" href="#contact">Become a Sponsor</a></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="tint" id="faq">
+    <div class="wrap">
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div class="faq">
+        <details><summary>How do I get tickets?</summary><p>Buy tickets by credit card from the Tickets link in the menu. To pay by check, Venmo or PayPal, email <a href="mailto:keller@pennsburykids.org">keller@pennsburykids.org</a>.</p></details>
+        <details><summary>Are kids included?</summary><p>This is an adults-only event.</p></details>
+        <details><summary>What time and where should I arrive?</summary><p>Please arrive by 5:30 PM for the farm tour, dinner set-up and live music. Dinner begins at 6:30 PM and the evening wraps up around 8:30 PM. Snipes Farm, 890 W. Bridge Street, Morrisville, PA 19067.</p></details>
+        <details><summary>What should I wear?</summary><p>Smart casual. Choose shoes that work on a hay-covered barn floor, and bring outdoor shoes for the farm tour if it has rained recently.</p></details>
+        <details><summary>What is included in the ticket price?</summary><p>A beautiful evening on the farm with good company, live music and dancing. All ticket proceeds support local families who need food assistance.</p></details>
+        <details><summary>Can I reserve my space or table?</summary><p>A table of 6 is held for each ticket buyer. If you don't have a full table, arrive early to sit together, or contact Keller to hold space.</p></details>
+        <details><summary>Do I need to bring anything?</summary><p>Bring your own picnic dinner, drinks (beer and wine are welcome), plates, flatware and napkins. Coolers and food deliveries are fine. Boxed dinners are pre-order only.</p></details>
+        <details><summary>Where do I park?</summary><p>Snipes Farm has plenty of parking, and volunteers will direct you.</p></details>
+        <details><summary>What if I need help getting to the registration area and tables?</summary><p>A golf cart runs from the parking lot. Let a volunteer know, or contact Denise Smith at (215) 601-9426 or <a href="mailto:denises@snipesfarm.org">denises@snipesfarm.org</a>, ideally one to two weeks before the event.</p></details>
+        <details><summary>Can I get a refund if I can't attend?</summary><p>Tickets are non-refundable, rain or shine, and count as tax-deductible donations to the host organizations. To transfer your ticket, email <a href="mailto:keller@pennsburykids.org">keller@pennsburykids.org</a> with the new guest's name.</p></details>
+        <details><summary>What if I can't or don't want to pay by credit card?</summary><p>Make checks payable to Pennsbury Kids and mail them to 2122 N Crescent Blvd, Yardley, PA 19067, including guest names and meal choices. Venmo (@pennsburykids) and PayPal (keller@pennsburykids.org) are also accepted.</p></details>
+        <details><summary>What happens if it rains?</summary><p>The event is rain or shine. If conditions become dangerous, the event will be canceled and ticket sales will be treated as donations. No refunds will be given.</p></details>
+        <details><summary>Who do I contact with a question not listed here?</summary><p>Keller Arnold, (908) 812-9128 or <a href="mailto:keller@pennsburykids.org">keller@pennsburykids.org</a>.</p></details>
+        <details><summary>What meals can we purchase?</summary>
+          <p>Ardana in Newtown prepares boxed dinners for $35 each (fees included), ordered through the Tickets page and picked up at the event. Each comes with cookies for dessert:</p>
+          <ul><li>Pasta Salad with Salmon</li><li>Falafel Power Bowl Salad</li><li>Chopped Chicken Salad</li></ul>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <h2 class="section-title">Ask a Question</h2>
+      <div class="split" style="align-items:start">
+        <!-- To receive messages: create a free form at formspree.io and replace YOUR_FORM_ID below. -->
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input type="hidden" name="_subject" value="New question from the A Night to Nourish website">
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <label>First name *<input name="first_name" required></label>
+          <label>Last name *<input name="last_name" required></label>
+          <label>Email *<input type="email" name="email" required></label>
+          <label>Phone<input type="tel" name="phone"></label>
+          <label class="full">Message<textarea name="message"></textarea></label>
+          <button class="btn" type="submit">Send Message</button>
+        </form>
+        <div>
+          <h3>Info</h3>
+          <p><strong>Keller Arnold</strong><br><a href="mailto:keller@pennsburykids.org">keller@pennsburykids.org</a><br><a href="tel:+19088129128">(908) 812-9128</a></p>
+          <p><strong>Event location</strong><br>Snipes Farm &amp; Education Center<br>890 W Bridge Street, Morrisville, PA 19067</p>
+          <p><strong>Paying by check?</strong><br>Make checks payable to Pennsbury Kids and mail to 2122 N Crescent Blvd, Yardley, PA 19067.</p>
+          <iframe class="map" title="Map to Snipes Farm" loading="lazy" src="https://maps.google.com/maps?q=890%20W%20Bridge%20St%2C%20Morrisville%2C%20PA%2019067&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <img src="images/logo-stacked.jpg" alt="A Night to Nourish logo">
+    <div>
+      <strong>A Night to Nourish</strong><br>
+      Hosted by Snipes Farm &amp; Education Center, Interfaith Food Alliance and Pennsbury Kids<br>
+      Snipes Farm &amp; Education Center, 890 W Bridge Street, Morrisville, PA 19067
+    </div>
+    <div>
+      Questions? Keller Arnold<br>
+      <a href="mailto:keller@pennsburykids.org">keller@pennsburykids.org</a> &middot; <a href="tel:+19088129128">(908) 812-9128</a>
+      <div class="social">
+        <a href="https://www.instagram.com/anighttonourish/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 4.7a5.1 5.1 0 100 10.2 5.1 5.1 0 000-10.2zm0 8.4a3.3 3.3 0 110-6.6 3.3 3.3 0 010 6.6zm5.3-9.8a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"/></svg></a>
+        <a href="https://www.facebook.com/share/1AFm5AsUFa/?mibextid=wwXIfr" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <p class="copy">&copy; 2026 A Night to Nourish</p>
+</footer>
+
+</body>
+</html>
